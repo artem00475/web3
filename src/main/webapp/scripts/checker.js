@@ -87,36 +87,37 @@ function checkOnlyOne(b){
 }
 
 function send(x,y) {
-    if ((x>=-5 & x<=3) & (y>-3&y<3)) {
+    if (true) {
         let send = new XMLHttpRequest();
-        send.open("GET", "/lab2-1.0-SNAPSHOT/?x=" + x + "&y=" + y + "&r=" + radius);
-        send.send(null);
+        const params = "j_idt7:xVal_input=" + x + "&j_idt7:textY=" + y + "&javax.faces.ViewState=" + document.getElementById("j_id1:javax.faces.ViewState:0").value + "&j_idt7:r1=" + "1"
+            + "&j_idt7:r2=" + "2" + "&j_idt7:r3=" + "3" + "&j_idt7:r4=" + "4" + "&j_idt7:r5=" + "5" + "&j_idt7=" + "j_idt7" + "&javax.faces.source=" +"j_idt7:button" +"&javax.faces.partial.event="+"click"
+        +"&javax.faces.partial.execute="+"j_idt7:button j_idt7" + "&javax.faces.behavior.event=" + "action" +"&javax.faces.partial.ajax="+"true" +"&javax.faces.partial.render="+"result"
+        send.open("POST", "/lab3-1.0-SNAPSHOT/main.xhtml");
+        send.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        send.send(params);
 
         send.onreadystatechange = function () {
             if (send.readyState !=4) {
                 return;
             }
             if (send.status == 200){
-                let datas = send.responseText.matchAll(/<td>-?[0-9a-z].*<\/td>/g);
-                let array1 = new Array();
-                for (const data of datas) {
-                    array1.push(data[0].replace('<td>','').replace('</td>',''));
+                document.getElementById("form:button1").click()
+                let hits = send.responseText.matchAll(/false|true/g);
+                let hit;
+                for (const h of hits) {
+                    hit = h[0].replace('<td>','').replace('</td>','');
                 }
-                let tr = document.createElement("tr");
-                tr.innerHTML='<td>'+array1[0]+'</td> <td>'+array1[1]+' </td> <td>'+array1[2]+'</td> <td>'+array1[3]+'</td>';
-                document.getElementById("table1").appendChild(tr);
-                let hit=false;
-                if (array1[3]=="true") {
-                    hit=true;
-                }
+                if (hit =="true") hit = true
+                else hit = false
                 let obj = {
-                    x:array1[0],
-                    y:array1[1],
-                    r:array1[2],
+                    x:x,
+                    y:y,
+                    r:rad,
                     hit:hit
                 };
                 array.push(obj);
-                drawDot(obj.x,obj.y,hit);
+                drawDot(x,y,hit)
+
             }
         }
     }
@@ -165,9 +166,9 @@ function getCursorPosition(canvas,event) {
         let pos = canvas.getBoundingClientRect();
         let x = ((event.clientX - pos.left -250)/50).toFixed(2);
         let y = ((150 - (event.clientY - pos.top))/50).toFixed(2);
-        //send(x,y);
+        send(x,y);
         //setHiddenValues(x,y)
-        drawDot(x,y,true);
+        //drawDot(x,y,true);
 
     }
     else {

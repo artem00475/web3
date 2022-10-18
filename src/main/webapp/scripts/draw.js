@@ -77,8 +77,7 @@ function drawGraph(r) {
 
     draw();
     ctx.beginPath();
-
-    // array.forEach(data => drawDot(data.x,data.y,data.hit));
+    array.forEach(data => drawDot(data.x,data.y,data.hit));
 
 
 }

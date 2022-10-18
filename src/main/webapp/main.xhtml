@@ -145,6 +145,9 @@
                 <!-- Кнопка подтверждения -->
                 <h:commandButton value = "Submit" action="#{datas.addData}" id="button"><f:ajax execute="@form" render="result"/> </h:commandButton>
             </h:form>
+                <h:form id="form" style="display: none">
+                    <h:commandButton id="button1"><f:ajax execute="@form" render="result"/> </h:commandButton>
+                </h:form>
             </td>
             <td>
                 <h:panelGroup id="result">
