@@ -32,7 +32,7 @@ function draw() {
 function drawDot(x,y,hitC) {
     x=x*50+250;
     y=150 - y*50;
-    if (x >= 0 & y >= 0) {
+    if (x >= 0 && y >= 0) {
         ctx.beginPath();
         if (hitC) ctx.fillStyle = "green";
         else ctx.fillStyle="red";

@@ -107,7 +107,7 @@ function send(x,y) {
                 for (const h of hits) {
                     hit = h[0].replace('<td>','').replace('</td>','');
                 }
-                if (hit =="true") hit = true
+                if (hit ==="true") hit = true
                 else hit = false
                 let obj = {
                     x:x,
@@ -124,24 +124,26 @@ function send(x,y) {
 }
 
 function getData() {
-    let request = new XMLHttpRequest();
-    request.open("GET","/lab2-1.0-SNAPSHOT/data");
-    request.send();
-    request.onreadystatechange = function () {
-        if (request.readyState !=4) {
-            return;
+    const table = document.getElementById("table1");
+    const rows = table.getElementsByTagName('td');
+    for (let i = array.length*4;i<rows.length;i=i+4) {
+        let array1 = new Array();
+        for (let j=0;j<4;j++) {
+            if (rows[i+j].innerHTML.match(/true|false|-?[0-9]\.?[0-9]*/) === null) continue;
+            array1.push(rows[i+j].innerHTML.match(/true|false|-?[0-9]\.?[0-9]*/));
         }
-        if (request.status == 200) {
-            if (!request.responseText.match("empty")) {
-            let dates = request.responseText.split("\n");
-            dates.pop();
-            dates.forEach(data => {
-                console.log(JSON.parse(data));
-                array.push(JSON.parse(data));
-            });
-            fillTableAndDots();
-        }
-        }
+        if (array1.length === 0) continue;
+        let hit;
+        if (array1[3][0] ==='true') hit = true
+        else hit = false
+        let obj = {
+            x:array1[0],
+            y:array1[1],
+            r:array1[2],
+            hit:hit
+        };
+        drawDot(array1[0],array1[1],hit);
+        array.push(obj);
     }
 }
 function fillTableAndDots() {
