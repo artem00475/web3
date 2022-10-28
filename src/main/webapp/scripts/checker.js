@@ -130,11 +130,11 @@ function getData() {
         let array1 = new Array();
         for (let j=0;j<4;j++) {
             if (rows[i+j].innerHTML.match(/true|false|-?[0-9]\.?[0-9]*/) === null) continue;
-            array1.push(rows[i+j].innerHTML.match(/true|false|-?[0-9]\.?[0-9]*/));
+            array1.push(rows[i+j].innerHTML.match(/true|false|-?[0-9]\.?[0-9]*/)[0]);
         }
         if (array1.length === 0) continue;
         let hit;
-        if (array1[3][0] ==='true') hit = true
+        if (array1[3] ==='true') hit = true
         else hit = false
         let obj = {
             x:array1[0],
