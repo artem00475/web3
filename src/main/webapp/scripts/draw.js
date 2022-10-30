@@ -83,5 +83,6 @@ function drawGraph(r) {
 }
 
 function getR() {
-    drawGraph(document.getElementById("form:r").innerHTML)
+    let r = document.getElementById("form:r").innerHTML
+    if (r>0) drawGraph(r)
 }
