@@ -5,43 +5,8 @@ import Base.DataBaseController;
 import java.util.ArrayList;
 
 public class Datas {
-    private double x;
-    private double y;
-    private double r;
-    private boolean hit;
     private static ArrayList<Data> dates = new ArrayList<>();
 
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getR() {
-        return r;
-    }
-
-    public void setR(double r) {
-        this.r = r;
-    }
-
-    public boolean isHit() {
-        return hit;
-    }
-
-    public void setHit(boolean hit) {
-        this.hit = hit;
-    }
 
     public ArrayList<Data> getDates() {
         return dates;
@@ -51,33 +16,32 @@ public class Datas {
         Datas.dates = dates;
     }
 
-    public void addData() {
-        check();
-        Data data = new Data(x,y,r,hit);
-        System.out.println(data);
+    public void addData(Shot shot) {
+        Data data = new Data(shot.getX(), shot.getY(), shot.getR(), false);
+        check(data);
+        System.out.println(data.getX());
         dates.add(data);
-        DataBaseController.add(x,y,r,hit);
+        DataBaseController.add(data.getX(), data.getY(), data.getR(), data.isHit());
     }
 
-    public void check() {
-        if (firstQaurter()||secondQaurter()||forthQuarter()) hit=true;
-        else hit=false;
-        //data.addData(this);
+    public void check(Data data) {
+        if (firstQaurter(data.getX(), data.getY(), data.getR())||secondQaurter(data.getX(), data.getY(), data.getR())||forthQuarter(data.getX(), data.getY(), data.getR())) data.setHit(true);
+        else data.setHit(false);
     }
 
-    protected boolean firstQaurter() {
+    protected boolean firstQaurter(double x, double y, double r) {
         if (x>=0 & y>=0 & x*x+y*y<=(r/2)*(r/2)) {
             return true;
         }
         return false;
     }
 
-    protected boolean secondQaurter() {
+    protected boolean secondQaurter(double x, double y, double r) {
         if (y>=0 & x<=0 & y<=x/2+r/2) return true;
         return false;
     }
 
-    protected boolean forthQuarter() {
+    protected boolean forthQuarter(double x, double y, double r) {
         if (y<=0 & x>=0 & x<=r/2 & y>=-r) return true;
         return false;
     }

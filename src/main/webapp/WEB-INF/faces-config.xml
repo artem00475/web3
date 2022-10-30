@@ -8,6 +8,11 @@
         <managed-bean-class>com.example.lab3.Datas</managed-bean-class>
         <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>shot</managed-bean-name>
+        <managed-bean-class>com.example.lab3.Shot</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <navigation-rule>
         <from-view-id>/welcomePage.xhtml</from-view-id>
         <navigation-case>

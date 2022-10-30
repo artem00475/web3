@@ -2,39 +2,7 @@ let ifRadiusChosen=false;
 //let radius;
 let array = new Array();
 
-function send(x,y) {
-    if (true) {
-        let send = new XMLHttpRequest();
-        const params = "j_idt10:xVal_input=" + x + "&j_idt10:textY=" + y + "&javax.faces.ViewState=" + document.getElementsByName("javax.faces.ViewState")[0].value + "&j_idt10:r1=" + "1"
-            + "&j_idt10:r2=" + "2" + "&j_idt10:r3=" + "3" + "&j_idt10:r4=" + "4" + "&j_idt10:r5=" + "5" + "&j_idt10=" + "j_idt10" + "&javax.faces.source=" +"j_idt10:button" +"&javax.faces.partial.event="+"click"
-        +"&javax.faces.partial.execute="+"j_idt10:button j_idt10" + "&javax.faces.behavior.event=" + "action" +"&javax.faces.partial.ajax="+"true" +"&javax.faces.partial.render="+"result"
-        send.open("POST", "/lab3-1.0-SNAPSHOT/main.xhtml");
-        send.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-        send.send(params);
 
-        send.onreadystatechange = function () {
-            if (send.readyState !=4) {
-                return;
-            }
-            if (send.status == 200){
-                document.getElementById("form:button1").click()
-                let hits = send.responseText.matchAll(/false|true/g);
-                let hit;
-                for (const h of hits) {
-                    hit = h[0].replace('<td>','').replace('</td>','');
-                }
-                // if (hit ==="true") hit = true
-                // else hit = false
-                // let obj = {
-                //     x:x,
-                //     y:y,
-                //     r:rad,
-                //     hit:hit
-                // };
-            }
-        }
-    }
-}
 
 function getData() {
     const table = document.getElementById("table1");
@@ -61,11 +29,14 @@ function getData() {
 }
 
 function getCursorPosition(canvas,event) {
-    if (ifRadiusChosen) {
+    if (document.getElementById("j_idt10:textR").value>0) {
         let pos = canvas.getBoundingClientRect();
         let x = ((event.clientX - pos.left -250)/50).toFixed(2);
         let y = ((150 - (event.clientY - pos.top))/50).toFixed(2);
-        send(x,y);
+        //send(x,y);
+        document.getElementById("j_idt10:xVal_input").value=x
+        document.getElementById("j_idt10:textY").value=y
+        document.getElementById("j_idt10:button").click()
         //setHiddenValues(x,y)
         //drawDot(x,y,true);
 
@@ -79,13 +50,46 @@ function addEventListenerToCanvas() {
     const canvas = document.querySelector('canvas');
     canvas.addEventListener("mousedown", function (e) {
         getCursorPosition(canvas,e);
-        //document.getElementById("form:button").click();
     })
 }
 
 function removeRow() {
     document.getElementById("table2").getElementsByTagName("tbody")[0].remove();
 }
+
+//function send(x,y) {
+//     if (true) {
+//         let send = new XMLHttpRequest();
+//         const params = "j_idt10:xVal_input=" + x + "&j_idt10:textY=" + y + "&javax.faces.ViewState=" + document.getElementsByName("javax.faces.ViewState")[0].value + "&j_idt10:r1=" + "1"
+//             + "&j_idt10:r2=" + "2" + "&j_idt10:r3=" + "3" + "&j_idt10:r4=" + "4" + "&j_idt10:r5=" + "5" + "&j_idt10=" + "j_idt10" + "&javax.faces.source=" +"j_idt10:button" +"&javax.faces.partial.event="+"click"
+//         +"&javax.faces.partial.execute="+"j_idt10:button j_idt10" + "&javax.faces.behavior.event=" + "action" +"&javax.faces.partial.ajax="+"true" +"&javax.faces.partial.render="+"result form_pannel"+"&j_idt10:textR="+document.getElementById("j_idt10:textR").value
+//         send.open("POST", "/lab3-1.0-SNAPSHOT/main.xhtml");
+//         send.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+//         send.send(params);
+//
+//         send.onreadystatechange = function () {
+//             if (send.readyState !=4) {
+//                 return;
+//             }
+//             if (send.status == 200){
+//                 document.getElementById("form:button1").click()
+//                 let hits = send.responseText.matchAll(/false|true/g);
+//                 let hit;
+//                 for (const h of hits) {
+//                     hit = h[0].replace('<td>','').replace('</td>','');
+//                 }
+//                 // if (hit ==="true") hit = true
+//                 // else hit = false
+//                 // let obj = {
+//                 //     x:x,
+//                 //     y:y,
+//                 //     r:rad,
+//                 //     hit:hit
+//                 // };
+//             }
+//         }
+//     }
+// }
 
 // function checkForm(el) {
 //     let y = el.y.value;

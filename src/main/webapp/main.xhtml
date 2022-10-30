@@ -169,7 +169,7 @@
                 <!-- Поле ввода координаты Х -->
                 <!--                <div class="input">-->
                 <p:outputLabel for="@next" value="X: "/>
-                <p:spinner id="xVal" value="#{datas.x}" min="-5" max="5" required="true" requiredMessage="  Enter a value"/>
+                <p:spinner id="xVal" value="#{shot.x}" min="-5" max="5" required="true" requiredMessage="  Enter a value"/>
                 <br/>
                 <h:message for="xVal" style="color: red"/>
                 <br/>
@@ -180,7 +180,7 @@
                 <!-- Поле ввода координаты Y -->
                 <div class="input">
                     <h:outputLabel for="textY">Y: </h:outputLabel>
-                    <h:inputText value="#{datas.y}" id="textY" required="true" requiredMessage=" Enter a value from -5 to 3">
+                    <h:inputText value="#{shot.y}" id="textY" required="true" requiredMessage=" Enter a value from -5 to 3">
                         <f:validator validatorId="YValidator"/>
                     </h:inputText>
                     <br/><h:message for="textY" style="color: red"/>
@@ -188,21 +188,17 @@
                 <!-- Поле ввода параметра R -->
                 <div class="input">
                     <h:outputLabel>R: </h:outputLabel>
-                    <h:commandButton id="r1" type="button" value = "1" action = "#{datas.setR(1)}" onclick = "drawGraph(1)"><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r2" type="button" value = "2" action = "#{datas.setR(2)}" onclick = "drawGraph(2)"><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r3" type="button" value = "3" action = "#{datas.setR(3)}" onclick = "drawGraph(3)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r4" type="button" value = "4" action = "#{datas.setR(4)}" onclick = "drawGraph(4)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r5" type="button" value = "5" action = "#{datas.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:inputHidden value="#{datas.r}" id="textR"><f:validator validatorId="RValidator"/></h:inputHidden>
+                    <h:commandButton id="r1" type="button" value = "1" action = "#{shot.setR(1)}" onclick = "drawGraph(1)"><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:commandButton id="r2" type="button" value = "2" action = "#{shot.setR(2)}" onclick = "drawGraph(2)"><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:commandButton id="r3" type="button" value = "3" action = "#{shot.setR(3)}" onclick = "drawGraph(3)" ><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:commandButton id="r4" type="button" value = "4" action = "#{shot.setR(4)}" onclick = "drawGraph(4)" ><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:commandButton id="r5" type="button" value = "5" action = "#{shot.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:inputHidden value="#{shot.r}" id="textR"><f:validator validatorId="RValidator"/></h:inputHidden>
                     <br/><h:message for="textR" style="color: red"/>
                 </div>
                 <!-- Кнопка подтверждения -->
-                <h:commandButton value = "Submit" action="#{datas.addData}" id="button"><f:ajax execute="@form" render="result form_pannel"/> </h:commandButton>
+                <h:commandButton value = "Submit" action="#{datas.addData(shot)}" id="button"><f:ajax execute="@form" render="result form_pannel"/> </h:commandButton>
             </h:form>
-                <h:form id="form" style="display: none">
-                    <h:commandButton id="button1"><f:ajax execute="@form" render="result form_pannel"/> </h:commandButton>
-                    <h:outputLabel id="r">#{datas.r}</h:outputLabel>
-                </h:form>
                 </h:panelGroup>
             </td>
             <td>

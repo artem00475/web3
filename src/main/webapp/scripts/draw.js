@@ -83,6 +83,10 @@ function drawGraph(r) {
 }
 
 function getR() {
-    let r = document.getElementById("form:r").innerHTML
-    if (r>0) drawGraph(r)
+    let r = document.getElementById("j_idt10:textR").value;
+    if (r>0) drawGraph(r);
+    else {
+        drawGraph(0)
+        ifRadiusChosen = false;
+    }
 }
