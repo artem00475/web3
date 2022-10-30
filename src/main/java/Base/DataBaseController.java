@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class DataBaseController {
 
-    public static void add(double x,double y,int r,boolean hit) {
+    public static void add(double x,double y,double r,boolean hit) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("database");
         EntityManager entityManager = factory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();

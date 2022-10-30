@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Datas {
     private double x;
     private double y;
-    private int r;
+    private double r;
     private boolean hit;
     private static ArrayList<Data> dates = new ArrayList<>();
 
@@ -31,11 +31,11 @@ public class Datas {
         this.y = y;
     }
 
-    public int getR() {
+    public double getR() {
         return r;
     }
 
-    public void setR(int r) {
+    public void setR(double r) {
         this.r = r;
     }
 

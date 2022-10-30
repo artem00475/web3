@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class Data implements Serializable {
     private double x;
     private double y;
-    private int r;
+    private double r;
     private boolean hit;
 
-    public Data(double x, double y, int r, boolean hit) {
+    public Data(double x, double y, double r, boolean hit) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -31,11 +31,11 @@ public class Data implements Serializable {
         this.y = y;
     }
 
-    public int getR() {
+    public double getR() {
         return r;
     }
 
-    public void setR(int r) {
+    public void setR(double r) {
         this.r = r;
     }
 

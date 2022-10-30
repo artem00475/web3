@@ -14,7 +14,7 @@ public class Coordinates {
     @Basic
     private double y;
     @Basic
-    private int r;
+    private double r;
     @Basic
     private boolean hit;
 
@@ -42,11 +42,11 @@ public class Coordinates {
         this.y = y;
     }
 
-    public int getR() {
+    public double getR() {
         return r;
     }
 
-    public void setR(int r) {
+    public void setR(double r) {
         this.r = r;
     }
 
