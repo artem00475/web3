@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="2.2">
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
         <managed-bean-name>datas</managed-bean-name>
         <managed-bean-class>com.example.lab3.Datas</managed-bean-class>
         <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/welcomePage.xhtml</from-view-id>
+        <navigation-case>
+            <to-view-id>/main.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/main.xhtml</from-view-id>
+        <navigation-case>
+            <to-view-id>/welcomePage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>

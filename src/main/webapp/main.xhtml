@@ -28,7 +28,7 @@
             border-collapse: collapse;
         }
         /*Селектор атрибутов*/
-        [colspan] {
+        .header {
             border-bottom: 1px solid gray;
             margin-bottom: 5%;
             background-color: antiquewhite;
@@ -95,8 +95,11 @@
     <table class="mainTable">
         <!-- Шапка -->
         <tr>
-            <td colspan="3">
+            <td colspan="2" class="header">
                 <h3>Tuchin Artem<br/>Group P32111 <br/>Variant 815</h3>
+            </td>
+            <td class="header">
+                <h:link>Welcome page</h:link>
             </td>
         </tr>
         <tr>
