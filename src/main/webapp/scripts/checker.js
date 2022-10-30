@@ -115,9 +115,6 @@ function send(x,y) {
                     r:rad,
                     hit:hit
                 };
-                array.push(obj);
-                drawDot(x,y,hit)
-
             }
         }
     }
