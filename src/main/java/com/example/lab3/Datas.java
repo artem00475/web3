@@ -2,12 +2,8 @@ package com.example.lab3;
 
 import Base.DataBaseController;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 
-@ManagedBean(eager = true)
-@ApplicationScoped
 public class Datas {
     private double x;
     private double y;
