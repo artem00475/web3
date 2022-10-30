@@ -89,7 +89,7 @@ function checkOnlyOne(b){
 function send(x,y) {
     if (true) {
         let send = new XMLHttpRequest();
-        const params = "j_idt7:xVal_input=" + x + "&j_idt7:textY=" + y + "&javax.faces.ViewState=" + document.getElementById("j_id1:javax.faces.ViewState:0").value + "&j_idt7:r1=" + "1"
+        const params = "j_idt7:xVal_input=" + x + "&j_idt7:textY=" + y + "&javax.faces.ViewState=" + document.getElementsByName("javax.faces.ViewState")[0].value + "&j_idt7:r1=" + "1"
             + "&j_idt7:r2=" + "2" + "&j_idt7:r3=" + "3" + "&j_idt7:r4=" + "4" + "&j_idt7:r5=" + "5" + "&j_idt7=" + "j_idt7" + "&javax.faces.source=" +"j_idt7:button" +"&javax.faces.partial.event="+"click"
         +"&javax.faces.partial.execute="+"j_idt7:button j_idt7" + "&javax.faces.behavior.event=" + "action" +"&javax.faces.partial.ajax="+"true" +"&javax.faces.partial.render="+"result"
         send.open("POST", "/lab3-1.0-SNAPSHOT/main.xhtml");

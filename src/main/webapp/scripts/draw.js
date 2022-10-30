@@ -81,3 +81,7 @@ function drawGraph(r) {
 
 
 }
+
+function getR() {
+    drawGraph(document.getElementById("form:r").innerHTML)
+}
