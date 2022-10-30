@@ -1,8 +1,8 @@
 let canvas;
 let ctx;
-let x=-1;
-let y=-1;
-let hit;
+//let x=-1;
+//let y=-1;
+//let hit;
 let rad;
 
 function createCanvas() {

@@ -133,7 +133,6 @@
                         <f:validator validatorId="YValidator"/>
                     </h:inputText>
                     <br/><h:message for="textY" style="color: red"/>
-                    <div id="yError"></div>
                 </div>
                 <!-- Поле ввода параметра R -->
                 <div class="input">
@@ -145,7 +144,6 @@
                     <h:commandButton id="r5" type="button" value = "5" action = "#{datas.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="form_pannel" /></h:commandButton>
                     <h:inputHidden value="#{datas.r}" id="textR"><f:validator validatorId="RValidator"/></h:inputHidden>
                     <br/><h:message for="textR" style="color: red"/>
-                    <div id="rError"></div>
                 </div>
                 <!-- Кнопка подтверждения -->
                 <h:commandButton value = "Submit" action="#{datas.addData}" id="button"><f:ajax execute="@form" render="result form_pannel"/> </h:commandButton>

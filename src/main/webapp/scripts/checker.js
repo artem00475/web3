@@ -1,90 +1,6 @@
 let ifRadiusChosen=false;
-let radius;
+//let radius;
 let array = new Array();
-function checkForm(el) {
-    let y = el.y.value;
-    let x = el.x.value;
-    if (checkX(x) & checkY(y) & checkR()) {
-        el.y.value = y.replace(",",".");
-        el.time.value = new Date().getTimezoneOffset();
-        return true;
-    }
-    return false;
-
-}
-
-function printErr(text,id) {
-    document.getElementById(id).innerHTML = text;
-    document.getElementById(id).style.color='red';
-}
-
-function checkY(y) {
-    y = y.replace(",",".");
-    if (y == '') {
-        printErr('Fill in the field','yError');
-        return false;
-    }else if (new RegExp(/^-?[0-2](\.[0-9]*)?$/).test(y)) {
-        document.getElementById('yError').innerHTML = '';
-        return true;
-    }else {
-        printErr('Incorrect value','yError');
-        return false;
-    }
-}
-
-function checkX(x) {
-    if (x == '') {
-        printErr('Fill in the field','xError');
-        return false;
-    }
-    else {
-        document.getElementById('xError').innerHTML = '';
-        return true;
-    }
-}
-
-function checkR() {
-    const params = document.getElementsByClassName("param");
-    let empty = true;
-    for (let i = 0; i < params.length; i++) {
-        if(params[i].checked) {
-            empty = false;
-            break;
-        }
-    }
-    if (empty) {
-        printErr('Fill in the field','rError');
-        return false;
-    }
-    else {
-        document.getElementById('rError').innerHTML = '';
-        return true;
-    }
-}
-function checkOnlyOne(b){
-
-    const x = document.getElementsByClassName('param');
-    for (let i = 0; i < x.length; i++) {
-        if(x[i].value != b) x[i].checked = false;
-    }
-    let empty = true;
-    for (let i = 0; i < x.length; i++) {
-        if(x[i].checked) {
-            empty = false;
-            break;
-        }
-    }
-    if (empty) {
-        clearCanv();
-        draw();
-        ifRadiusChosen = false;
-    }
-    else {
-        ifRadiusChosen=true;
-        radius=b;
-        drawGraph(b);
-    }
-}
 
 function send(x,y) {
     if (true) {
@@ -107,14 +23,14 @@ function send(x,y) {
                 for (const h of hits) {
                     hit = h[0].replace('<td>','').replace('</td>','');
                 }
-                if (hit ==="true") hit = true
-                else hit = false
-                let obj = {
-                    x:x,
-                    y:y,
-                    r:rad,
-                    hit:hit
-                };
+                // if (hit ==="true") hit = true
+                // else hit = false
+                // let obj = {
+                //     x:x,
+                //     y:y,
+                //     r:rad,
+                //     hit:hit
+                // };
             }
         }
     }
@@ -143,22 +59,6 @@ function getData() {
         array.push(obj);
     }
 }
-function fillTableAndDots() {
-    if (array.length>0) {
-        array.forEach(data => {
-            let tr = document.createElement("tr");
-            tr.innerHTML='<td>'+data.x+'</td> <td>'+data.y+' </td> <td>'+data.r+'</td> <td>'+data.hit+'</td>';
-            document.getElementById("table1").appendChild(tr);
-            drawDot(data.x,data.y,data.hit);
-        })
-    }
-}
-
-function setHiddenValues(x,y) {
-    document.getElementById("form:xVal1").value=x;
-    document.getElementById("form:textY").value=y;
-}
-
 
 function getCursorPosition(canvas,event) {
     if (ifRadiusChosen) {
@@ -183,3 +83,98 @@ function addEventListenerToCanvas() {
     })
 }
 
+// function checkForm(el) {
+//     let y = el.y.value;
+//     let x = el.x.value;
+//     if (checkX(x) & checkY(y) & checkR()) {
+//         el.y.value = y.replace(",",".");
+//         el.time.value = new Date().getTimezoneOffset();
+//         return true;
+//     }
+//     return false;
+//
+// }
+//
+// function printErr(text,id) {
+//     document.getElementById(id).innerHTML = text;
+//     document.getElementById(id).style.color='red';
+// }
+//
+// function checkY(y) {
+//     y = y.replace(",",".");
+//     if (y == '') {
+//         printErr('Fill in the field','yError');
+//         return false;
+//     }else if (new RegExp(/^-?[0-2](\.[0-9]*)?$/).test(y)) {
+//         document.getElementById('yError').innerHTML = '';
+//         return true;
+//     }else {
+//         printErr('Incorrect value','yError');
+//         return false;
+//     }
+// }
+//
+// function checkX(x) {
+//     if (x == '') {
+//         printErr('Fill in the field','xError');
+//         return false;
+//     }
+//     else {
+//         document.getElementById('xError').innerHTML = '';
+//         return true;
+//     }
+// }
+//
+// function checkR() {
+//     const params = document.getElementsByClassName("param");
+//     let empty = true;
+//     for (let i = 0; i < params.length; i++) {
+//         if(params[i].checked) {
+//             empty = false;
+//             break;
+//         }
+//     }
+//     if (empty) {
+//         printErr('Fill in the field','rError');
+//         return false;
+//     }
+//     else {
+//         document.getElementById('rError').innerHTML = '';
+//         return true;
+//     }
+// }
+// function checkOnlyOne(b){
+//
+//     const x = document.getElementsByClassName('param');
+//     for (let i = 0; i < x.length; i++) {
+//         if(x[i].value != b) x[i].checked = false;
+//     }
+//     let empty = true;
+//     for (let i = 0; i < x.length; i++) {
+//         if(x[i].checked) {
+//             empty = false;
+//             break;
+//         }
+//     }
+//     if (empty) {
+//         clearCanv();
+//         draw();
+//         ifRadiusChosen = false;
+//     }
+//     else {
+//         ifRadiusChosen=true;
+//         radius=b;
+//         drawGraph(b);
+//     }
+// }
+
+// function fillTableAndDots() {
+//     if (array.length>0) {
+//         array.forEach(data => {
+//             let tr = document.createElement("tr");
+//             tr.innerHTML='<td>'+data.x+'</td> <td>'+data.y+' </td> <td>'+data.r+'</td> <td>'+data.hit+'</td>';
+//             document.getElementById("table1").appendChild(tr);
+//             drawDot(data.x,data.y,data.hit);
+//         })
+//     }
+// }
