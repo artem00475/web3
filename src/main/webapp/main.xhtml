@@ -180,8 +180,8 @@
                 <!-- Поле ввода координаты Y -->
                 <div class="input">
                     <h:outputLabel for="textY">Y: </h:outputLabel>
-                    <h:inputText value="#{shot.y}" id="textY" required="true" requiredMessage=" Enter a value from -5 to 3">
-                        <f:validator validatorId="YValidator"/>
+                    <h:inputText value="#{shot.y}" id="textY" required="true" requiredMessage="Enter a value from -5 to 3" converterMessage="Not a number" validatorMessage="Enter a value from -5 to 3">
+                        <f:validateDoubleRange minimum="-5" maximum="3"/>
                     </h:inputText>
                     <br/><h:message for="textY" style="color: red"/>
                 </div>
@@ -193,7 +193,7 @@
                     <h:commandButton id="r3" type="button" value = "3" action = "#{shot.setR(3)}" onclick = "drawGraph(3)" ><f:ajax render="form_pannel" /></h:commandButton>
                     <h:commandButton id="r4" type="button" value = "4" action = "#{shot.setR(4)}" onclick = "drawGraph(4)" ><f:ajax render="form_pannel" /></h:commandButton>
                     <h:commandButton id="r5" type="button" value = "5" action = "#{shot.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:inputHidden value="#{shot.r}" id="textR"><f:validator validatorId="RValidator"/></h:inputHidden>
+                    <h:inputHidden value="#{shot.r}" id="textR" validatorMessage="Choose radius" converterMessage="Choose radius"><f:validateDoubleRange maximum="5" minimum="1"/></h:inputHidden>
                     <br/><h:message for="textR" style="color: red"/>
                 </div>
                 <!-- Кнопка подтверждения -->
