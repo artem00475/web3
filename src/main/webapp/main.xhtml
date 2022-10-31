@@ -188,13 +188,14 @@
                 <!-- Поле ввода параметра R -->
                 <div class="input">
                     <h:outputLabel>R: </h:outputLabel>
-                    <h:commandButton id="r1" type="button" value = "1" action = "#{shot.setR(1)}" onclick = "drawGraph(1)"><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r2" type="button" value = "2" action = "#{shot.setR(2)}" onclick = "drawGraph(2)"><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r3" type="button" value = "3" action = "#{shot.setR(3)}" onclick = "drawGraph(3)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r4" type="button" value = "4" action = "#{shot.setR(4)}" onclick = "drawGraph(4)" ><f:ajax render="form_pannel" /></h:commandButton>
-                    <h:commandButton id="r5" type="button" value = "5" action = "#{shot.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="form_pannel" /></h:commandButton>
+                    <h:commandButton id="r1" type="button" value = "1" action = "#{shot.setR(1)}" onclick = "drawGraph(1)"><f:ajax render="message" /></h:commandButton>
+                    <h:commandButton id="r2" type="button" value = "2" action = "#{shot.setR(2)}" onclick = "drawGraph(2)"><f:ajax render="message" /></h:commandButton>
+                    <h:commandButton id="r3" type="button" value = "3" action = "#{shot.setR(3)}" onclick = "drawGraph(3)" ><f:ajax render="message" /></h:commandButton>
+                    <h:commandButton id="r4" type="button" value = "4" action = "#{shot.setR(4)}" onclick = "drawGraph(4)" ><f:ajax render="message" /></h:commandButton>
+                    <h:commandButton id="r5" type="button" value = "5" action = "#{shot.setR(5)}" onclick = "drawGraph(5)" ><f:ajax render="message" /></h:commandButton>
+                    <h:panelGroup id="message">
                     <h:inputHidden value="#{shot.r}" id="textR" validatorMessage="Choose radius" converterMessage="Choose radius"><f:validateDoubleRange maximum="5" minimum="1"/></h:inputHidden>
-                    <br/><h:message for="textR" style="color: red"/>
+                        <br/><h:message for="textR" style="color: red"/></h:panelGroup>
                 </div>
                 <!-- Кнопка подтверждения -->
                 <h:commandButton value = "Submit" action="#{datas.addData(shot)}" id="button"><f:ajax execute="@form" render="result form_pannel"/> </h:commandButton>
